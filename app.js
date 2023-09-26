@@ -47,7 +47,7 @@ const h2 = document.createElement("h2");
 h2.textContent = seattle.location;
 article.appendChild(h2);
 
-const ul = document.createElement("ul");
+const ulCookies = document.createElement("ul");
 for (let i = 0; i < seattle.cookiesPerHour.length; i++) {
 	const li = document.createElement("li");
 	li.textContent = seattle.cookiesPerHour[i];
@@ -55,13 +55,12 @@ for (let i = 0; i < seattle.cookiesPerHour.length; i++) {
 }
 article.appendChild(ul);
 
-const ul = document.createElement("ul");
-for 
+const ulTime = document.createElement("ul");
+const li = document.createElement("li");
+ul.textContent = hours;
+ul.appendChild(li);
 
-
-
-
-
+article.appendChild(ul);
 
 // const p1 = document.createElement("p");
 // p1.textContent = seattle.minCust;
