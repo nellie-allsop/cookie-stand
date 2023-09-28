@@ -3,13 +3,32 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-		<script src="./app.js" ; defer></script>
+		<script src="./app.js" defer></script>
 		<script src="./style.css"></script>
-		<title>Salmon Cookies</title>
+		<title>Sales and Shops</title>
 	</head>
 	<body>
 		<h1>Salmon Cookie Sales</h1>
 		<table id="salesData"></table>
+		<form id="shopForm">
+			<fieldset>
+				<legend>Register a shop</legend>
+				<label for="shopName">Shop location</label>
+				<input name="shopName" />
+
+				<label for="minCust">Minimum number of customers per hour</label>
+				<input name="minCust" type="number" />
+
+				<label for="maxCust">Maximum number of customers per hour</label>
+				<input name="maxCust" type="number" />
+
+				<button>Register now</button>
+			</fieldset>
+		</form>
 	</body>
 </html>
+
+<!-- function Shop(shopName, minCust, maxCust, average) {
+	this.shopName = shopName;
+	this.minCust = minCust;
+	this.maxCust = maxCust; -->

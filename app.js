@@ -62,26 +62,6 @@ Shop.prototype.render = function () {
 
 	table.appendChild(tr);
 };
-// One of these for each time plus total = 15
-// const td = document.createElement("th");
-// td.textContent = this.average;
-// tr.appendChild(td);
-
-// const timeTr = document.createElement("tr");
-// salesData.appendChild(timeTr);
-
-// const timeTd = document.createElemen("td");
-// timeTd.textContent = hours;
-// timeTr.appendChild(timeTd);
-//array of hours within table
-
-// want shop.cookiesPerHour within the table
-
-// tr with 'td's within it
-
-// const Ul = document.createElement("ul");
-
-// salesData.appendChild(Ul);
 
 const seattle = new Shop("Seattle", 23, 65, 6.3);
 
@@ -114,22 +94,17 @@ dubai.render();
 paris.render();
 lima.render();
 
-// Each location should have times, cookies per hour and totals
+const form = document.querySelector("form");
 
-// copied and pasted from above
+form.addEventListener("submit", function (event) {
+	event.preventDefault();
+	const shopName = event.target.shopName.value;
+	const minCust = event.target.minCust.value;
+	const maxCust = event.target.maxCust.value;
 
-// const tokyoH2 = document.createElement("h2");
-// tokyoH2.textContent = tokyo.location;
-// salesData.appendChild(tokyoH2);
+	const salesData = document.getElementById("salesData");
 
-// const tokyoUl = document.createElement("ul");
-// for (let i = 0; i < hours.length; i++) {
-// 	const li = document.createElement("li");
-// 	li.textContent = `${hours[i]}: ${tokyo.cookiesPerHour[i]} cookies`;
-// 	tokyoUl.appendChild(li);
-// }
-
-// salesData.appendChild(tokyoUl);
-
-// function Shop(times, cookies-per-hour, totals)
-// this.
+	const p = document.createElement("p");
+	p.textContent = `${shopName} ${minCust} ${maxCust} `;
+	salesData.appendChild(p);
+});
