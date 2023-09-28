@@ -37,7 +37,7 @@ Shop.prototype.calculateSales = function () {
 		this.customersPerHour.push(hourCustomers);
 		const hourCookiesSold = hourCustomers * this.avgCookiesPerCust;
 		this.cookiesPerHour.push(Math.floor(hourCookiesSold));
-		this.totalCookieSold = this.totalCookieSold + hourCookiesSold;
+		this.totalCookieSold = Math.floor(this.totalCookieSold) + hourCookiesSold;
 	}
 };
 
@@ -63,6 +63,7 @@ Shop.prototype.render = function () {
 	table.appendChild(tr);
 };
 
+//Constructor function
 const seattle = new Shop("Seattle", 23, 65, 6.3);
 
 const tokyo = new Shop("Tokyo", 3, 24, 1.2);
@@ -94,17 +95,28 @@ dubai.render();
 paris.render();
 lima.render();
 
-const form = document.querySelector("form");
+const form = document.getElementById("shopForm");
+
+// function infoRequired() {
+// 	let x = event.shopName.value
+// 	if (x == "") {
+// 		alert("Please provide a shop name!");
+// 		return false;
+// 	}
+// }
 
 form.addEventListener("submit", function (event) {
 	event.preventDefault();
 	const shopName = event.target.shopName.value;
 	const minCust = event.target.minCust.value;
 	const maxCust = event.target.maxCust.value;
+	const avgCookies = event.target.average.value;
 
-	const salesData = document.getElementById("salesData");
+	const newShop = new Shop(shopName, minCust, maxCust, avgCookies);
 
-	const p = document.createElement("p");
-	p.textContent = `${shopName} ${minCust} ${maxCust} `;
-	salesData.appendChild(p);
+	newShop.render();
 });
+
+// append final row to table footer
+
+//locations need to be in an array
