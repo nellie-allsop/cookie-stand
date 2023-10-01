@@ -1,1 +1,40 @@
+body {
+	background-color: #f1dada;
+}
 
+header {
+	flex-direction: row;
+	justify-content: space-around;
+	display: inline;
+}
+
+form {
+	display: flex;
+	width: 300px;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+#Logo {
+	display: flex;
+	border: solid #ff8552;
+}
+
+h1 {
+	font-family: monospace;
+	color: #ff8552;
+	font-size: 4rem;
+}
+
+div {
+	display: flex;
+}
+
+p {
+	font-family: monospace;
+	color: #ff8552;
+}
+
+#salesData {
+	border: 3px solid;
+}

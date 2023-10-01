@@ -64,15 +64,18 @@ Shop.prototype.render = function () {
 };
 
 //Constructor function
-const seattle = new Shop("Seattle", 23, 65, 6.3);
+// Put these in an array
+const stores = [
+	new Shop("Seattle", 23, 65, 6.3),
 
-const tokyo = new Shop("Tokyo", 3, 24, 1.2);
+	new Shop("Tokyo", 3, 24, 1.2),
 
-const dubai = new Shop("Dubai", 11, 38, 3.7);
+	new Shop("Dubai", 11, 38, 3.7),
 
-const paris = new Shop("Paris", 20, 38, 2.3);
+	new Shop("Paris", 20, 38, 2.3),
 
-const lima = new Shop("Lima", 2, 16, 4.6);
+	new Shop("Lima", 2, 16, 4.6),
+];
 
 const headerRow = document.createElement("tr");
 const blankTd = document.createElement("td");
@@ -85,15 +88,20 @@ for (let i = 0; i < hours.length; i++) {
 }
 
 const totalHeading = document.createElement("th");
-totalHeading;
+totalHeading.textContent = "Total";
+headerRow.appendChild(totalHeading);
 
 table.appendChild(headerRow);
 
-seattle.render();
-tokyo.render();
-dubai.render();
-paris.render();
-lima.render();
+for (let i = 0; i < stores.length; i++) {
+	stores[i].render();
+}
+
+// seattle.render();
+// tokyo.render();
+// dubai.render();
+// paris.render();
+// lima.render();
 
 const form = document.getElementById("shopForm");
 
@@ -112,11 +120,35 @@ form.addEventListener("submit", function (event) {
 	const maxCust = event.target.maxCust.value;
 	const avgCookies = event.target.average.value;
 
-	const newShop = new Shop(shopName, minCust, maxCust, avgCookies);
+	const newShop = new Shop(shopName, +minCust, +maxCust, +avgCookies);
 
 	newShop.render();
+	renderTotalRow();
 });
 
-// append final row to table footer
+function renderTotalRow() {
+	const oldTr = document.getElementById("totalrow");
+	oldTr?.remove();
 
-//locations need to be in an array
+	const tr = document.createElement("tr");
+	tr.setAttribute("id", "totalrow");
+
+	const th = document.createElement("th");
+	th.textContent = "Hourly total";
+	tr.appendChild(th);
+
+	for (let i = 0; i < hours.length; i++) {
+		let hourlyTotal = 0;
+		for (let k = 0; k < stores.length; k++) {
+			hourlyTotal += stores[k].cookiesPerHour[i];
+		}
+
+		const td = document.createElement("td");
+		td.textContent = hourlyTotal;
+		tr.appendChild(td);
+	}
+
+	table.appendChild(tr);
+}
+
+renderTotalRow();
